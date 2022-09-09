@@ -1,44 +1,72 @@
 package br.com.fema.projeto.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import br.com.fema.projeto.json.annotations.JsonIgnore;
 
-public class Cidade {
+public class Cidade implements Serializable {
 
-    @JsonIgnore
-    private String nome;
-    @JsonIgnore(ignore = {"sigla"})
+	private static final long serialVersionUID = 1L;
+	
+	private String nome;
+    @JsonIgnore(ignore = {"cidadeList", "cidadeSet"})
     private Estado estado;
     private Integer numeroHabitantes;
+    private LocalDate fundacaoCidade;
+    private LocalDateTime dataHoraAgora;
 
-    Cidade() {}
+    public Cidade() {}
+    
+	public Cidade(String nome, Estado estado, Integer numeroHabitantes, LocalDate fundacaoCidade,
+			LocalDateTime dataHoraAgora) {
+		this.nome = nome;
+		this.estado = estado;
+		this.numeroHabitantes = numeroHabitantes;
+		this.fundacaoCidade = fundacaoCidade;
+		this.dataHoraAgora = dataHoraAgora;
+	}
 
-    public Cidade(String nome, Estado estado, Integer numeroHabitantes) {
-        this.nome = nome;
-        this.estado = estado;
-        this.numeroHabitantes = numeroHabitantes;
-    }
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Estado getEstado() {
-        return estado;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+	public Estado getEstado() {
+		return estado;
+	}
 
-    public Integer getNumeroHabitantes() {
-        return numeroHabitantes;
-    }
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 
-    public void setNumeroHabitantes(Integer numeroHabitantes) {
-        this.numeroHabitantes = numeroHabitantes;
-    }
+	public Integer getNumeroHabitantes() {
+		return numeroHabitantes;
+	}
+
+	public void setNumeroHabitantes(Integer numeroHabitantes) {
+		this.numeroHabitantes = numeroHabitantes;
+	}
+
+	public LocalDate getFundacaoCidade() {
+		return fundacaoCidade;
+	}
+
+	public void setFundacaoCidade(LocalDate fundacaoCidade) {
+		this.fundacaoCidade = fundacaoCidade;
+	}
+
+	public LocalDateTime getDataHoraAgora() {
+		return dataHoraAgora;
+	}
+
+	public void setDataHoraAgora(LocalDateTime dataHoraAgora) {
+		this.dataHoraAgora = dataHoraAgora;
+	}
 }
